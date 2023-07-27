@@ -360,6 +360,15 @@ tags = {
 
 }
 
+resource "aws_instance" "web" {
+  ami           = var.ami
+  instance_type = var.instance_type
+  count         = 5
+
+  tags = {
+    Name = "${var.environment}-${count.index}"
+  }
+
 =======================================
 
 Demo 5: Variable Block in terraform
